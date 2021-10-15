@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Poq.Application</name>
+    </assembly>
+    <members>
+        <member name="P:Poq.Application.Parameter.ProductParams.MaxPrice">
+            <summary>
+            The max price 
+            </summary>
+            <example>999.9</example>
+        </member>
+        <member name="P:Poq.Application.Parameter.ProductParams.Highlights">
+            <summary>
+            The keywords 
+            </summary>
+            <example>blue,red</example>
+        </member>
+        <member name="P:Poq.Application.Parameter.ProductParams.Size">
+            <summary>
+            The sizes the product is available in
+            </summary>
+            <example>medium</example>
+        </member>
+    </members>
+</doc>

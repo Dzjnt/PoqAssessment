@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Poq</name>
+    </assembly>
+    <members>
+        <member name="M:Poq.Controllers.ProductsController.GetProducts(Poq.Application.Parameter.ProductParams)">
+            <summary>
+            Endpoint which allow users to get filtered products
+            </summary>
+            <param name="size" example="medium">The product's size</param>
+            <param name="highlight" example="red,blue">The product's description keywords to highlight</param>
+             <param name="max priceprice" example="12.00">The products max price user can pay</param>
+            <response code="200">Product retrieved</response>
+            <response code="404">Product not found</response>
+            <response code="500">Oops! Can't lookup your product right now :(</response>
+        </member>
+    </members>
+</doc>
