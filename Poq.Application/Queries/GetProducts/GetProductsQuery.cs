@@ -1,7 +1,7 @@
 ﻿using MediatR;
-using Poq.Application.Common.Extensions;
 using Poq.Application.DTOs;
 using Poq.Application.Parameter;
+using Poq.Application.Response;
 
 namespace Poq.Application.Queries.GetProducts
 {

@@ -1,4 +1,4 @@
-﻿namespace Poq.Application.Common.Extensions
+﻿namespace Poq.Application.Response
 {
     public class Result<T>
     {

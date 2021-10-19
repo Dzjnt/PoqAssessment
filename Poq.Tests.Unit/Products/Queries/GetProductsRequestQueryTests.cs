@@ -59,6 +59,17 @@ namespace Poq.Tests.Unit.Products.Queries
         }
 
         [Theory]
+        [InlineData("sadsa")]
+        public async Task Handle_ReturnsFilteredProductBySize_InvalidInput(string size)
+        {
+            var parameters = new ProductParams() { Size = size };
+
+            var result = await _handler.Handle(new GetProductsQuery(parameters), CancellationToken.None);
+
+            result.Value.Products.TrueForAll(x => x.Sizes.All(e => e == size));
+
+        }
+        [Theory]
         [InlineData(10)]
         [InlineData(12)]
         [InlineData(5)]
@@ -102,7 +113,16 @@ namespace Poq.Tests.Unit.Products.Queries
         }
 
         [Fact]
+        public async Task Handle_ReturnsNotHighlightedProductsDescription_InvalidInput()
+        {
+            var parameters = new ProductParams() { Highlights = "Not existing word" };
 
+            var result = await _handler.Handle(new GetProductsQuery(parameters), CancellationToken.None);
+
+            result.Value.Products.ShouldNotContain(p => Regex.IsMatch(p.Description, @"<\s*([^ >]+)[^>]*>.*?<\s*/\s*\1\s*>"));
+
+        }
+        [Fact]
         public async Task Handle_ReturnsMostCommonKeywords()
         {
 
