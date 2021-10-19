@@ -1,6 +1,9 @@
-﻿using Poq.Application.Model;
+﻿using Poq.Application.Common.Wrapper;
+using Poq.Application.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Poq.Application.Common.Extensions
 {
@@ -17,7 +20,20 @@ namespace Poq.Application.Common.Extensions
         }
         public static void ToHighlight(this List<Product> query, string highlights)
         {
-            query.ForEach(x => x.Description = HtmlHelper.HighlightKeywords(x.Description, highlights));
+            query.ForEach(x => x.Description = HtmlSanitizerWrapper.Sanitize(HighlightKeywords(x.Description, highlights)));
+        }
+        private static string HighlightKeywords(string text, string keywords)
+        {
+
+            if (text == string.Empty || keywords == string.Empty)
+                return text;
+            var words = keywords.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+
+            return words.Select(word => word.Trim()).Aggregate(text,
+                                (current, pattern) =>
+                                Regex.Replace(current, pattern,
+                                                $"<em>{current}</em>",
+                                                RegexOptions.IgnoreCase));
         }
     }
 }
