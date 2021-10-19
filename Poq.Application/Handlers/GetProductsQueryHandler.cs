@@ -2,10 +2,9 @@
 using MediatR;
 using Poq.Application.Common.Extensions;
 using Poq.Application.Common.Interfaces;
-using Poq.Application.Core;
 using Poq.Application.DTOs;
-using Poq.Application.Products;
 using Poq.Application.Queries.GetProducts;
+using Poq.Application.Response;
 using System.Threading;
 using System.Threading.Tasks;
 

@@ -14,15 +14,12 @@ namespace Poq.Infrastructure.HTTP
         {
             _httpClient = httpClient;
         }
-
         protected async Task<T> Get<T>()
         {
-            var request = CreateRequest(HttpMethod.Get, _httpClient.BaseAddress.ToString());
+            var request = CreateRequest(HttpMethod.Get, _httpClient.BaseAddress?.ToString());
 
             return await ExecuteRequest<T>(request);
         }
-
-
         private static HttpRequestMessage CreateRequest(HttpMethod httpMethod, string uri, object content = null)
         {
             var request = new HttpRequestMessage(httpMethod, uri);
@@ -35,9 +32,6 @@ namespace Poq.Infrastructure.HTTP
 
             return request;
         }
-
-
-
         private async Task<T> ExecuteRequest<T>(HttpRequestMessage request)
         {
             try

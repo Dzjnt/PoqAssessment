@@ -1,6 +1,7 @@
 ﻿using Moq;
 using Poq.Application.Common.Interfaces;
-using Poq.Application.Products;
+using Poq.Application.Model;
+using Poq.Application.Response;
 using System.Collections.Generic;
 
 namespace Poq.Tests.Unit.Mocks

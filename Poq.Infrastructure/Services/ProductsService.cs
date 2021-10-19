@@ -1,6 +1,5 @@
 ﻿using Poq.Application.Common.Interfaces;
-using Poq.Application.Parameter;
-using Poq.Application.Products;
+using Poq.Application.Response;
 using Poq.Infrastructure.HTTP;
 using System.Threading.Tasks;
 
@@ -17,7 +16,8 @@ namespace Poq.Infrastructure.Services
 
         public async Task<GetProductsResponse> GetProducts()
         {
-            return await _client.GetProducts();
+            var result = await _client.GetProducts();
+            return result;
         }
     }
 }

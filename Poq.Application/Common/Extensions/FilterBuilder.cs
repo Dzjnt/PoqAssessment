@@ -1,12 +1,11 @@
-﻿using Poq.Application.Common.Extensions;
-using Poq.Application.DTOs;
+﻿using Poq.Application.DTOs;
 using Poq.Application.Parameter;
 
-namespace Poq.Application.Core
+namespace Poq.Application.Common.Extensions
 {
     public class FilterBuilder
     {
-        private ProductParams _productParams;
+        private readonly ProductParams _productParams;
         public FilterBuilder() : this(new ProductParams()) { }
         public FilterBuilder(ProductParams productParams)
         {
@@ -23,9 +22,9 @@ namespace Poq.Application.Core
             _productParams.Size = size;
             return this;
         }
-        public FilterBuilder SetHighlights(string highligts)
+        public FilterBuilder SetHighlights(string highlights)
         {
-            _productParams.Highlights = highligts;
+            _productParams.Highlights = highlights;
             return this;
         }
         public ProductDto Build(ProductDto productDTO)

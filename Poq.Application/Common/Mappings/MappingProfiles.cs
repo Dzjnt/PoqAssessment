@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Poq.Application.DTOs;
-using Poq.Application.Products;
+using Poq.Application.Response;
 
 namespace Poq.Application.Common.Mappings
 {

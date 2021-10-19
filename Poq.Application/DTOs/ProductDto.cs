@@ -1,4 +1,4 @@
-﻿using Poq.Application.Products;
+﻿using Poq.Application.Model;
 using System.Collections.Generic;
 using System.Linq;
 

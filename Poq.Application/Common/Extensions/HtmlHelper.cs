@@ -7,8 +7,7 @@ namespace Poq.Application.Common.Extensions
 {
     public static class HtmlHelper
     {
-        private readonly static HtmlSanitizer Sanitizer = new HtmlSanitizer();
-
+        private static readonly HtmlSanitizer Sanitizer = new();
         public static string HighlightKeywords(string text, string keywords)
         {
 
@@ -21,7 +20,6 @@ namespace Poq.Application.Common.Extensions
                                 Regex.Replace(current, pattern,
                                                 $"<em>{current}</em>",
                                                 RegexOptions.IgnoreCase)));
-
         }
     }
 }

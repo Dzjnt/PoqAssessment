@@ -1,4 +1,4 @@
-﻿using Poq.Application.Products;
+﻿using Poq.Application.Response;
 using System.Threading.Tasks;
 
 namespace Poq.Application.Common.Interfaces
