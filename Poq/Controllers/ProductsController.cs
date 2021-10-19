@@ -17,11 +17,11 @@ namespace Poq.Controllers
         /// </summary>
         /// <param name="parameters">Products filter parameters</param>
         /// <response code="200">Product retrieved</response>
-        /// <response code="404">Product not found</response>
+        /// <response code="400">Invalid parameters</response>
         /// <response code="500">Oops! Can't lookup your product right now :(</response>
         [ProducesResponseType(typeof(ProductDto), 200)]
         [ProducesResponseType(500)]
-        [ProducesResponseType(404)]
+        [ProducesResponseType(400)]
         [Produces("application/json")]
         [HttpGet(Name = "GetProducts")]
         public async Task<IActionResult> GetProducts([FromQuery] ProductParams parameters)
