@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Poq.Application.Common.Exceptions;
 using Poq.Application.Common.Mappings;
 using Poq.Application.Handlers;
 using Poq.Application.Parameter;
@@ -58,17 +59,6 @@ namespace Poq.Tests.Unit.Products.Queries
 
         }
 
-        [Theory]
-        [InlineData("sadsa")]
-        public async Task Handle_ReturnsFilteredProductBySize_InvalidInput(string size)
-        {
-            var parameters = new ProductParams() { Size = size };
-
-            var result = await _handler.Handle(new GetProductsQuery(parameters), CancellationToken.None);
-
-            result.Value.Products.TrueForAll(x => x.Sizes.All(e => e == size));
-
-        }
         [Theory]
         [InlineData(10)]
         [InlineData(12)]
@@ -132,6 +122,28 @@ namespace Poq.Tests.Unit.Products.Queries
             var result = await _handler.Handle(new GetProductsQuery(parameters), CancellationToken.None);
 
             result.Value.MostCommonWords.ShouldBe(mostCommonWords);
+
+        }
+
+        [Theory]
+        [InlineData("sadsa")]
+        public async Task Handle_ShouldThrowExceptionWhenInvalidSize(string size)
+        {
+            var parameters = new ProductParams() { Size = size };
+
+
+            await Should.ThrowAsync<RestApiException>(() => _handler.Handle(new GetProductsQuery(parameters), CancellationToken.None));
+
+        }
+
+        [Theory]
+        [InlineData(-6.0)]
+        public async Task Handle_ShouldThrowExceptionWhenNegativeMaxPrice(double maxPrice)
+        {
+            var parameters = new ProductParams() { MaxPrice = maxPrice };
+
+
+            await Should.ThrowAsync<RestApiException>(() => _handler.Handle(new GetProductsQuery(parameters), CancellationToken.None));
 
         }
     }
